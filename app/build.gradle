@@ -1,0 +1,104 @@
+import dependencies.Deps
+
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+    id 'kotlin-android-extensions'
+    id 'androidx.navigation.safeargs.kotlin'
+}
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.2"
+
+    defaultConfig {
+        applicationId "com.example.simpleshow"
+        minSdkVersion 21
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        externalNativeBuild {
+            cmake {
+                cppFlags ""
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            buildConfigField "String", "BASE_URL", "\"https://api.openweathermap.org/data/2.5/\""
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            buildConfigField "String", "BASE_URL", "\"https://api.openweathermap.org/data/2.5/\""
+        }
+    }
+    externalNativeBuild {
+        cmake {
+            path "src/main/cpp/CMakeLists.txt"
+            version "3.10.2"
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    buildFeatures {
+        viewBinding true
+    }
+}
+
+kapt {
+    correctErrorTypes true
+}
+
+dependencies {
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation 'androidx.core:core-ktx:1.3.2'
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'com.google.android.material:material:1.2.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    implementation Deps.hiltAndroid
+    kapt Deps.hiltAndroidCompiler
+    implementation Deps.hiltViewModel
+    kapt Deps.hiltCompiler
+
+    implementation Deps.room
+    kapt Deps.roomCompiler
+    implementation Deps.roomKtx
+
+    implementation Deps.retrofit
+    implementation Deps.retrofitGson
+    implementation Deps.loggingInterceptor
+
+    implementation Deps.coroutines
+    implementation Deps.coroutinesReactiveStreamsKtx
+    implementation Deps.coroutinesViewModelKtx
+    implementation Deps.coroutinesLiveDataKtx
+
+    implementation Deps.viewModelKtx
+    implementation Deps.coreKtx
+    implementation Deps.fragmentKtx
+
+    implementation 'com.google.code.gson:gson:2.8.6'
+
+    implementation Deps.navigationUIKtx
+    implementation Deps.navigationFragmentKtx
+
+    implementation Deps.glide
+    kapt Deps.glideCompiler
+}

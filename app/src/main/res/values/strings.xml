@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">SimpleShow</string>
+    <string name="temp_celsius_printout">%.1f \u2103</string>
+    <string name="temp_min_max_celsius_printout">%.1f - %.1f\u2103</string>
+    <string name="wind_speed_printout">%.1f km/h</string>
+    <string name="pressure_printout">%1$d mBar</string>
+    <string name="humid_printout">%1$d %%</string>
+
+    <string name="icon_url">https://openweathermap.org/img/wn/%1$s@4x.png</string>
+</resources>

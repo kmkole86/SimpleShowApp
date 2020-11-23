@@ -1,0 +1,1 @@
+C:\Users\kmkole86\AndroidStudioProjects\SimpleShow\buildSrc\build\classes\kotlin\main\dependencies\Deps.class;C:\Users\kmkole86\AndroidStudioProjects\SimpleShow\buildSrc\build\classes\kotlin\main\dependencies\Versions.class
