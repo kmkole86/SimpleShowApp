@@ -1,12 +1,12 @@
 package com.example.simpleshow.framework.presentation.splash
 
-import com.example.simpleshow.business.domain.model.WeatherData
+sealed class SplashViewState {
 
-//view state should be immutable, so data class is best candidate since you can only make copy
-data class SplashViewState(
-    val weatherData: WeatherData? = null,
-    val isLoading: Boolean = false,
-    val isError: Boolean = false,
-    val errorMessage: String? = null,
-    val navigateToWeather: Boolean = false
-)
+    object Idle : SplashViewState()
+
+    object Loading : SplashViewState()
+
+    object NavigateToWeatherPage : SplashViewState()
+
+    data class Error(val errorMessage: String? = null) : SplashViewState()
+}

@@ -25,6 +25,13 @@ abstract class ViewStateStore<State : Any>(initialState: State) :
         _stateFlow.value = newState
     }
 
+    fun dispatchState(flow: Flow<State>) {
+        launch {
+            flow.flowOn(Dispatchers.Main)
+                .collect { dispatchState(it) }
+        }
+    }
+
     fun dispatchState(f: suspend (State) -> Reducer<State>) {
         launch {
             val reducer = f(state())
@@ -34,6 +41,7 @@ abstract class ViewStateStore<State : Any>(initialState: State) :
         }
     }
 
+    @JvmName("dispatchStateFlowReducer")
     fun dispatchState(flow: Flow<Reducer<State>>) {
         launch {
             flow.flowOn(Dispatchers.Main)

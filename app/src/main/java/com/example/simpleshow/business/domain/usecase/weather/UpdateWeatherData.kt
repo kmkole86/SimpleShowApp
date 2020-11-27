@@ -16,25 +16,15 @@ class UpdateWeatherData @Inject constructor(
 ) {
     operator fun invoke() = getUpdateWeatherData()
 
-    private fun getUpdateWeatherData(): Flow<Reducer<WeatherViewState>> =
-        flow<Reducer<WeatherViewState>> {
+    private fun getUpdateWeatherData(): Flow<WeatherViewState> =
+        flow<WeatherViewState> {
 
             when (val result = weatherNetworkDataSource.fetchWeatherData()) {
                 is Data.Result -> {
-                    emit(Reducer { copy(weatherData = result.data, isLoading = false) })
+                    emit(WeatherViewState.Data(result.data))
                     weatherCacheDataSource.insertWeatherData(result.data)
                 }
-                is Data.Error -> {
-                    emit(Reducer {
-                        copy(
-                            isLoading = false,
-                            isError = true,
-                            errorMessage = result.message
-                        )
-                    })
-                }
-                else -> {
-                }
+                is Data.Error -> WeatherViewState.Error(result.message)
             }
-        }.onStart { emit(Reducer { copy(isLoading = true) }) }
+        }.onStart { emit(WeatherViewState.Loading) }
 }

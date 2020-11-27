@@ -3,7 +3,6 @@ package com.example.simpleshow.business.domain.usecase.splash
 import com.example.simpleshow.business.data.cache.abstraction.WeatherCacheDataSource
 import com.example.simpleshow.business.data.network.abstraction.WeatherNetworkDataSource
 import com.example.simpleshow.business.domain.Data
-import com.example.simpleshow.business.domain.Reducer
 import com.example.simpleshow.framework.presentation.splash.SplashViewState
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
@@ -18,29 +17,16 @@ class FetchWeatherData @Inject constructor(
 ) {
     operator fun invoke() = getInitData()
 
-    private fun getInitData(): Flow<Reducer<SplashViewState>> = flow<Reducer<SplashViewState>> {
-        emit(Reducer { copy(isLoading = true) })
-        when (val result = weatherNetworkDataSource.fetchWeatherData()) {
+    private fun getInitData(): Flow<SplashViewState> = flow<SplashViewState> {
+        emit(SplashViewState.Loading)
+        when (
+            val result = weatherNetworkDataSource.fetchWeatherData()) {
             is Data.Result -> {
                 weatherCacheDataSource.insertWeatherData(result.data)
-                emit(Reducer {
-                    copy(
-                        weatherData = result.data,
-                        isLoading = false,
-                        navigateToWeather = true
-                    )
-                })
+                emit(SplashViewState.NavigateToWeatherPage)
             }
             is Data.Error -> {
-                emit(Reducer {
-                    copy(
-                        isLoading = false,
-                        isError = true,
-                        errorMessage = result.message
-                    )
-                })
-            }
-            else -> {
+                emit(SplashViewState.Error(result.message))
             }
         }
     }.flowOn(dispatcher)

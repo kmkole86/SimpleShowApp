@@ -43,8 +43,18 @@ class SplashFragment : BaseFragment() {
 
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.viewState.collect { state ->
-                if (state.navigateToWeather) {
-                    navigateToWeatherFragment()
+                when (state) {
+                    is SplashViewState.Idle -> {
+                        //do nothing, for now
+                    }
+                    is SplashViewState.Loading -> {
+                        binding.fragSplashProgressBar.visibility = View.VISIBLE
+                    }
+                    is SplashViewState.Error -> {
+                        //TODO show error
+                        binding.fragSplashProgressBar.visibility = View.INVISIBLE
+                    }
+                    is SplashViewState.NavigateToWeatherPage -> navigateToWeatherFragment()
                 }
             }
         }

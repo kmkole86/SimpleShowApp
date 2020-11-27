@@ -4,4 +4,4 @@ import com.example.simpleshow.business.domain.store.ViewStateStore
 import javax.inject.Inject
 
 class SplashStore @Inject constructor() :
-    ViewStateStore<SplashViewState>(SplashViewState())
+    ViewStateStore<SplashViewState>(SplashViewState.Idle)
