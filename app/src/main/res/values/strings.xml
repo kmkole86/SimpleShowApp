@@ -7,4 +7,11 @@
     <string name="humid_printout">%1$d %%</string>
 
     <string name="icon_url">https://openweathermap.org/img/wn/%1$s@4x.png</string>
+    <string name="last_updated">Last Updated</string>
+    <string name="feels_like">Feels like</string>
+    <string name="wind_speed">Wind speed</string>
+    <string name="pressure">Pressure</string>
+    <string name="humidity">Humidity</string>
+    <string name="min_max_temp">min/max temp</string>
+    <string name="refresh">refresh</string>
 </resources>
