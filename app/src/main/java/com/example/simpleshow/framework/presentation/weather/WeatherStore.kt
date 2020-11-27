@@ -5,4 +5,4 @@ import javax.inject.Inject
 
 
 class WeatherStore @Inject constructor() :
-    ViewStateStore<WeatherViewState>(WeatherViewState())
+    ViewStateStore<WeatherViewState>(WeatherViewState.Idle)
