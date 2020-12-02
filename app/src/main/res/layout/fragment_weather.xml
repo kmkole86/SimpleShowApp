@@ -1,205 +1,210 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="@color/light_blue_200"
-    android:paddingStart="16dp"
-    android:paddingTop="16dp"
-    android:paddingEnd="16dp"
     tools:context=".framework.presentation.weather.WeatherFragment">
 
-    <ProgressBar
-        android:id="@+id/fragWeather_progressBar"
-        style="@style/ProgressBarStyle"
-        android:layout_width="0dp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:indeterminate="true"
-        app:layout_constraintBottom_toTopOf="@id/fragWeather_btRefresh"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:paddingStart="16dp"
+        android:paddingTop="16dp"
+        android:paddingEnd="16dp">
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/fragWeather_tvTemp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="48sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <ProgressBar
+            android:id="@+id/fragWeather_progressBar"
+            style="@style/ProgressBarStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:indeterminate="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fragWeather_tvMinMaxTempLabel" />
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/fragWeather_tvTemp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="48sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/fragWeather_tvWeatherDescription"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/fragWeather_tvTemp" />
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/fragWeather_tvCityName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="16dp"
-        android:gravity="center"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/fragWeather_tvWeatherDescription" />
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/fragWeather_tvWeatherDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fragWeather_tvTemp" />
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/fragWeather_tvLastUpdateTimeLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="16dp"
-        android:gravity="center"
-        android:text="@string/last_updated"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/fragWeather_tvCityName" />
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/fragWeather_tvCityName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="16dp"
+            android:gravity="center"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fragWeather_tvWeatherDescription" />
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/fragWeather_tvLastUpdateTime"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="@id/fragWeather_tvLastUpdateTimeLabel"
-        app:layout_constraintStart_toEndOf="@id/fragWeather_tvLastUpdateTimeLabel"
-        app:layout_constraintTop_toTopOf="@id/fragWeather_tvLastUpdateTimeLabel" />
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/fragWeather_tvLastUpdateTimeLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="16dp"
+            android:gravity="center"
+            android:text="@string/last_updated"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fragWeather_tvCityName" />
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/fragWeather_tvTempFeelsLikeLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:text="@string/feels_like"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/fragWeather_tvLastUpdateTimeLabel" />
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/fragWeather_tvLastUpdateTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@id/fragWeather_tvLastUpdateTimeLabel"
+            app:layout_constraintStart_toEndOf="@id/fragWeather_tvLastUpdateTimeLabel"
+            app:layout_constraintTop_toTopOf="@id/fragWeather_tvLastUpdateTimeLabel" />
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/fragWeather_tvTempFeelsLike"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="@id/fragWeather_tvTempFeelsLikeLabel"
-        app:layout_constraintStart_toEndOf="@id/fragWeather_tvTempFeelsLikeLabel"
-        app:layout_constraintTop_toTopOf="@id/fragWeather_tvTempFeelsLikeLabel" />
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/fragWeather_tvTempFeelsLikeLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="@string/feels_like"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fragWeather_tvLastUpdateTimeLabel" />
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/fragWeather_tvWindSpeedLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:text="@string/wind_speed"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/fragWeather_tvTempFeelsLikeLabel" />
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/fragWeather_tvTempFeelsLike"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@id/fragWeather_tvTempFeelsLikeLabel"
+            app:layout_constraintStart_toEndOf="@id/fragWeather_tvTempFeelsLikeLabel"
+            app:layout_constraintTop_toTopOf="@id/fragWeather_tvTempFeelsLikeLabel" />
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/fragWeather_tvWindSpeed"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="@id/fragWeather_tvWindSpeedLabel"
-        app:layout_constraintStart_toEndOf="@id/fragWeather_tvWindSpeedLabel"
-        app:layout_constraintTop_toTopOf="@id/fragWeather_tvWindSpeedLabel" />
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/fragWeather_tvWindSpeedLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="@string/wind_speed"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fragWeather_tvTempFeelsLikeLabel" />
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/fragWeather_tvPressureLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:text="@string/pressure"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/fragWeather_tvWindSpeedLabel" />
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/fragWeather_tvWindSpeed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@id/fragWeather_tvWindSpeedLabel"
+            app:layout_constraintStart_toEndOf="@id/fragWeather_tvWindSpeedLabel"
+            app:layout_constraintTop_toTopOf="@id/fragWeather_tvWindSpeedLabel" />
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/fragWeather_tvPressure"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="@id/fragWeather_tvPressureLabel"
-        app:layout_constraintStart_toEndOf="@id/fragWeather_tvPressureLabel"
-        app:layout_constraintTop_toTopOf="@id/fragWeather_tvPressureLabel" />
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/fragWeather_tvPressureLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="@string/pressure"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fragWeather_tvWindSpeedLabel" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/fragWeather_tvPressure"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@id/fragWeather_tvPressureLabel"
+            app:layout_constraintStart_toEndOf="@id/fragWeather_tvPressureLabel"
+            app:layout_constraintTop_toTopOf="@id/fragWeather_tvPressureLabel" />
 
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/fragWeather_tvHumidityLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:text="@string/humidity"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/fragWeather_tvPressureLabel" />
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/fragWeather_tvHumidityLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="@string/humidity"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fragWeather_tvPressureLabel" />
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/fragWeather_tvHumidity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="@id/fragWeather_tvHumidityLabel"
-        app:layout_constraintStart_toEndOf="@id/fragWeather_tvHumidityLabel"
-        app:layout_constraintTop_toTopOf="@id/fragWeather_tvHumidityLabel" />
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/fragWeather_tvHumidity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@id/fragWeather_tvHumidityLabel"
+            app:layout_constraintStart_toEndOf="@id/fragWeather_tvHumidityLabel"
+            app:layout_constraintTop_toTopOf="@id/fragWeather_tvHumidityLabel" />
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/fragWeather_tvMinMaxTempLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="@string/min_max_temp"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/fragWeather_tvHumidityLabel" />
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/fragWeather_tvMinMaxTempLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/min_max_temp"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fragWeather_tvHumidityLabel" />
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/fragWeather_tvMinMaxTemp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@id/fragWeather_tvMinMaxTempLabel"
-        app:layout_constraintTop_toBottomOf="@id/fragWeather_tvHumidityLabel" />
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/fragWeather_tvMinMaxTemp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/fragWeather_tvMinMaxTempLabel"
+            app:layout_constraintTop_toBottomOf="@id/fragWeather_tvHumidityLabel" />
 
-    <Button
-        android:id="@+id/fragWeather_btRefresh"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/refresh"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.8" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <Button
+            android:id="@+id/fragWeather_btRefresh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="24dp"
+            android:text="@string/refresh"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fragWeather_progressBar" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
