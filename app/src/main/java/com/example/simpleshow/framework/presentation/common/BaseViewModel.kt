@@ -6,11 +6,11 @@ import com.example.simpleshow.business.domain.StateAction
 import com.example.simpleshow.business.domain.store.ViewStateStore
 import kotlinx.coroutines.flow.StateFlow
 
-abstract class BaseViewModel<State : Any, Store : ViewStateStore<State>, Action : StateAction> :
+abstract class BaseViewModel<State : Any, Action : StateAction> :
     ViewModel() {
 
     protected abstract val stateHandle: SavedStateHandle
-    protected abstract val store: Store
+    protected abstract val store: ViewStateStore<State>
 
     val viewState: StateFlow<State> by lazy { store.stateFlow }
 

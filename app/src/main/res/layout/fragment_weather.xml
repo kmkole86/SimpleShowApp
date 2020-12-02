@@ -47,6 +47,18 @@
         app:layout_constraintTop_toBottomOf="@id/fragWeather_tvTemp" />
 
     <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/fragWeather_tvCityName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/fragWeather_tvWeatherDescription" />
+
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/fragWeather_tvLastUpdateTimeLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -57,7 +69,7 @@
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/fragWeather_tvWeatherDescription" />
+        app:layout_constraintTop_toBottomOf="@id/fragWeather_tvCityName" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/fragWeather_tvLastUpdateTime"
@@ -74,7 +86,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="16dp"
         android:gravity="center"
         android:text="@string/feels_like"
         android:textSize="16sp"

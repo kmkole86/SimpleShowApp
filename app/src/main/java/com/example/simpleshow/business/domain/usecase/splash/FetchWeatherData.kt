@@ -4,6 +4,7 @@ import com.example.simpleshow.business.data.cache.abstraction.WeatherCacheDataSo
 import com.example.simpleshow.business.data.network.abstraction.WeatherNetworkDataSource
 import com.example.simpleshow.business.domain.Data
 import com.example.simpleshow.framework.presentation.splash.SplashViewState
+import com.example.simpleshow.util.Constants
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -20,7 +21,10 @@ class FetchWeatherData @Inject constructor(
     private fun getInitData(): Flow<SplashViewState> = flow<SplashViewState> {
         emit(SplashViewState.Loading)
         when (
-            val result = weatherNetworkDataSource.fetchWeatherData()) {
+            val result = weatherNetworkDataSource.fetchWeatherData(
+                Constants.DEFAULT_CITY,
+                Constants.DEFAULT_UNIT
+            )) {
             is Data.Result -> {
                 weatherCacheDataSource.insertWeatherData(result.data)
                 emit(SplashViewState.NavigateToWeatherPage)

@@ -12,9 +12,9 @@ class WeatherNetworkServiceImpl @Inject constructor(
     private val mapper: NetworkEntityMapper
 ) : WeatherNetworkService {
 
-    override suspend fun fetchWeatherData(): Data<WeatherData> {
+    override suspend fun fetchWeatherData(city: String, units: String): Data<WeatherData> {
         return mapper.mapFromApiResponse(
-            weatherApiService.fetchWeatherData(),
+            weatherApiService.fetchWeatherData(city, units),
             System.currentTimeMillis()
         )
     }

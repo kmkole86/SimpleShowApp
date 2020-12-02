@@ -10,7 +10,7 @@ interface WeatherApiService {
 
     @GET("weather")
     suspend fun fetchWeatherData(
-        @Query("q") city: String = "Belgrade",
-        @Query("units") units: String = "metric"
+        @Query("q") city: String,
+        @Query("units") units: String
     ): ApiResponse<WeatherDataNetworkEntry, OpenWeatherApiError>
 }

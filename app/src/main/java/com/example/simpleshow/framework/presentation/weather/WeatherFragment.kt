@@ -73,7 +73,7 @@ class WeatherFragment : BaseFragment() {
     }
 
     private fun updateWeatherUIData(weatherData: WeatherData) {
-        weatherData?.let {
+        weatherData.let {
             binding.fragWeatherTvLastUpdateTime.text =
                 dateUtil.getUnixTimestamp(it.updatedAt)
             binding.fragWeatherTvTemp.text =
@@ -92,6 +92,7 @@ class WeatherFragment : BaseFragment() {
                     it.temperatureMin,
                     it.temperatureMax
                 )
+            binding.fragWeatherTvCityName.text = it.cityName
 
             Glide.with(this@WeatherFragment)
                 .load(getString(R.string.icon_url, it.iconUrl)) // refactor to helper

@@ -15,7 +15,7 @@ class SplashViewModel
     override val store: SplashStore,
     private val fetchWeatherData: FetchWeatherData
 ) :
-    BaseViewModel<SplashViewState, SplashStore, StateAction.SplashAction>() {
+    BaseViewModel<SplashViewState, StateAction.SplashAction>() {
 
     init {
         onAction(ActionGetWeatherData)

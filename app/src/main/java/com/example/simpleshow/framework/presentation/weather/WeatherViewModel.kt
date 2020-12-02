@@ -14,7 +14,7 @@ class WeatherViewModel @ViewModelInject constructor(
     private val showWeatherData: ShowWeatherData,
     private val updateWeatherData: UpdateWeatherData
 ) :
-    BaseViewModel<WeatherViewState, WeatherStore, StateAction.WeatherAction>() {
+    BaseViewModel<WeatherViewState, StateAction.WeatherAction>() {
 
     init {
         onAction(ActionShowWeatherData)

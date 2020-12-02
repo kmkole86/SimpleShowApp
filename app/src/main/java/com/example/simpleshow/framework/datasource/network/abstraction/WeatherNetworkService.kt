@@ -5,5 +5,5 @@ import com.example.simpleshow.business.domain.model.WeatherData
 
 interface WeatherNetworkService {
 
-    suspend fun fetchWeatherData(): Data<WeatherData>
+    suspend fun fetchWeatherData(city: String, unit: String): Data<WeatherData>
 }
