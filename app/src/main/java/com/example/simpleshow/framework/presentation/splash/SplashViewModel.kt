@@ -11,11 +11,10 @@ import com.example.simpleshow.framework.presentation.weather.ActionGetWeatherDat
 
 class SplashViewModel
 @ViewModelInject constructor(
-    @Assisted override val stateHandle: SavedStateHandle,
-    override val store: SplashStore,
+    @Assisted stateHandle: SavedStateHandle,
+    store: SplashStore,
     private val fetchWeatherData: FetchWeatherData
-) :
-    BaseViewModel<SplashViewState, StateAction.SplashAction>() {
+) : BaseViewModel<SplashViewState, StateAction.SplashAction>(stateHandle, store) {
 
     init {
         onAction(ActionGetWeatherData)
@@ -23,9 +22,7 @@ class SplashViewModel
 
     override fun onAction(action: StateAction.SplashAction) {
         when (action) {
-            ActionGetWeatherData -> store.dispatchState(fetchWeatherData())
-            else -> {
-            }
+            is ActionGetWeatherData -> store.dispatchState(fetchWeatherData())
         }
     }
 }

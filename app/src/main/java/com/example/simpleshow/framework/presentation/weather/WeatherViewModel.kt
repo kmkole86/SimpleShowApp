@@ -9,12 +9,11 @@ import com.example.simpleshow.business.domain.usecase.weather.UpdateWeatherData
 import com.example.simpleshow.framework.presentation.common.BaseViewModel
 
 class WeatherViewModel @ViewModelInject constructor(
-    @Assisted override val stateHandle: SavedStateHandle,
-    override val store: WeatherStore,
+    @Assisted stateHandle: SavedStateHandle,
+    store: WeatherStore,
     private val showWeatherData: ShowWeatherData,
     private val updateWeatherData: UpdateWeatherData
-) :
-    BaseViewModel<WeatherViewState, StateAction.WeatherAction>() {
+) : BaseViewModel<WeatherViewState, StateAction.WeatherAction>(stateHandle, store) {
 
     init {
         onAction(ActionShowWeatherData)
@@ -22,8 +21,8 @@ class WeatherViewModel @ViewModelInject constructor(
 
     override fun onAction(action: StateAction.WeatherAction) {
         when (action) {
-            ActionShowWeatherData -> store.dispatchState(showWeatherData())
-            ActionUpdateWeatherData -> store.dispatchState(updateWeatherData())
+            is ActionShowWeatherData -> store.dispatchState(showWeatherData())
+            is ActionUpdateWeatherData -> store.dispatchState(updateWeatherData())
         }
     }
 }
