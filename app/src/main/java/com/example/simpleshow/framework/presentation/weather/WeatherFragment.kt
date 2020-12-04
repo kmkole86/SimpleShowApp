@@ -1,5 +1,6 @@
 package com.example.simpleshow.framework.presentation.weather
 
+import android.animation.ObjectAnimator
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +13,8 @@ import com.example.simpleshow.business.domain.model.WeatherData
 import com.example.simpleshow.business.domain.util.DateUtil
 import com.example.simpleshow.databinding.FragmentWeatherBinding
 import com.example.simpleshow.framework.presentation.common.BaseFragment
+import com.example.simpleshow.framework.presentation.common.animateToInvisible
+import com.example.simpleshow.framework.presentation.common.animateToVisible
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -55,17 +58,18 @@ class WeatherFragment : BaseFragment() {
                     }
                     is WeatherViewState.Loading -> {
                         binding.fragWeatherBtRefresh.isEnabled = false
-                        binding.fragWeatherProgressBar.animate().alpha(1f).start()
+                        binding.fragWeatherProgressBar.animateToVisible()
                     }
                     is WeatherViewState.Error -> {
                         //TODO show error
                         binding.fragWeatherBtRefresh.isEnabled = true
-                        binding.fragWeatherProgressBar.animate().alpha(0f).start()
+                        binding.fragWeatherProgressBar.animateToInvisible()
+                        ObjectAnimator.ofFloat()
                     }
                     is WeatherViewState.Data -> {
                         updateWeatherUIData(state.weatherData)
                         binding.fragWeatherBtRefresh.isEnabled = true
-                        binding.fragWeatherProgressBar.animate().alpha(0f).start()
+                        binding.fragWeatherProgressBar.animateToInvisible()
                     }
                 }
             }

@@ -11,6 +11,8 @@ import androidx.navigation.fragment.findNavController
 import com.example.simpleshow.R
 import com.example.simpleshow.databinding.FragmentSplashBinding
 import com.example.simpleshow.framework.presentation.common.BaseFragment
+import com.example.simpleshow.framework.presentation.common.animateToInvisible
+import com.example.simpleshow.framework.presentation.common.animateToVisible
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -48,11 +50,11 @@ class SplashFragment : BaseFragment() {
                         //do nothing, for now
                     }
                     is SplashViewState.Loading -> {
-                        binding.fragSplashProgressBar.animate().alpha(1f).start()
+                        binding.fragSplashProgressBar.animateToVisible()
                     }
                     is SplashViewState.Error -> {
                         //TODO show error
-                        binding.fragSplashProgressBar.animate().alpha(0f).start()
+                        binding.fragSplashProgressBar.animateToInvisible()
                     }
                     is SplashViewState.NavigateToWeatherPage -> navigateToWeatherFragment()
                 }
