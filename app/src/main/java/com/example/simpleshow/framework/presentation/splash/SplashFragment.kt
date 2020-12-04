@@ -48,11 +48,11 @@ class SplashFragment : BaseFragment() {
                         //do nothing, for now
                     }
                     is SplashViewState.Loading -> {
-                        binding.fragSplashProgressBar.visibility = View.VISIBLE
+                        binding.fragSplashProgressBar.animate().alpha(1f).start()
                     }
                     is SplashViewState.Error -> {
                         //TODO show error
-                        binding.fragSplashProgressBar.visibility = View.INVISIBLE
+                        binding.fragSplashProgressBar.animate().alpha(0f).start()
                     }
                     is SplashViewState.NavigateToWeatherPage -> navigateToWeatherFragment()
                 }

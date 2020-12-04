@@ -55,17 +55,17 @@ class WeatherFragment : BaseFragment() {
                     }
                     is WeatherViewState.Loading -> {
                         binding.fragWeatherBtRefresh.isEnabled = false
-                        binding.fragWeatherProgressBar.visibility = View.VISIBLE
+                        binding.fragWeatherProgressBar.animate().alpha(1f).start()
                     }
                     is WeatherViewState.Error -> {
                         //TODO show error
-                        binding.fragWeatherProgressBar.visibility = View.INVISIBLE
                         binding.fragWeatherBtRefresh.isEnabled = true
+                        binding.fragWeatherProgressBar.animate().alpha(0f).start()
                     }
                     is WeatherViewState.Data -> {
                         updateWeatherUIData(state.weatherData)
                         binding.fragWeatherBtRefresh.isEnabled = true
-                        binding.fragWeatherProgressBar.visibility = View.INVISIBLE
+                        binding.fragWeatherProgressBar.animate().alpha(0f).start()
                     }
                 }
             }
